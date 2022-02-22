@@ -1,0 +1,66 @@
+{%  extends 'main.html' %}
+
+{% block content %}
+
+{%  include 'status.html' %}
+
+
+<br>
+<div class="row">
+	<div class="col-md-5">
+		<h5>Our Hosts:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="">Add a Host</a>
+			<table class="table table-sm">
+				<tr>
+					<th>First name</th>
+					<th>Second name</th>
+					<th>Phone</th>
+					<th>Rooms</th>
+				</tr>
+
+				{% for host in hosts %}
+					<tr>
+						<td>{{host.first_name}}</td>
+						<td>{{host.last_name}}</td>
+						<td>{{host.phone}}</td>
+						<td><a class="btn btn-sm btn-info" href="{% url 'show_host' host.id %}">Show</a></td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>TOP 3 ROOMS</h5>
+		<hr>
+		<a class="btn btn-primary  btn-sm btn-block" href="{% url 'book_room' %}">Book a Room</a>
+		<div class="card card-body">
+			
+			<table class="table table-sm">
+				<tr>
+					<th>Location</th>
+					<th>Price</th>
+					<th>Details</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+
+				{% for room in top3 %}
+					<tr>
+						<td>{{room.location.city}}</td>
+						<td>{{room.price}}</td>
+						<td>{{room.desctiption}}</td>
+						<td><a class="btn btn-sm btn-info" href="{% url 'update_room' room.id%}">Update</a></td>
+						<td><a class="btn btn-sm btn-danger" href="{% url 'delete_room' room.id%}">Remove</a></td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}

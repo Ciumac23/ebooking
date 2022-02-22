@@ -1,0 +1,48 @@
+{%  extends 'main.html' %}
+
+{% block content %}
+<br>
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+
+			<form method="get">
+				{{filter.form}}
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+
+		</div>
+	</div>
+	
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+                    <th>Country</th>
+					<th>City</th>
+                    <th>Region</th>
+                    <th>Street</th>
+					<th>Details (about room)</th>
+					<th>Price $</th>
+				</tr>
+                {% for room in rooms %}
+                <tr>
+                    <td>{{room.location.country_id.name}}</td>
+                    <td>{{room.location.city}}</td>
+                    <td>{{room.location.country_id.region_id.region_name}}</td>
+                    <td>{{room.location.street}}</td>
+                    <td>{{room.desctiption}}</td>
+                    <td>{{room.price}}</td>
+                {% endfor %}
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

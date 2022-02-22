@@ -1,0 +1,21 @@
+{%  extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <h1 class="display-4">eBooking Service</h1> 
+    <div class="row">
+        <div class="col-md-15">
+            <div class="card card-body">
+
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{form}}
+                    <input type="submit" name="Book">
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

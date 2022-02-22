@@ -1,0 +1,81 @@
+{%  extends 'main.html' %}
+
+{% block content %}
+
+	<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Host:</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="">Update Host</a>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="">Book a Room</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Phone: {{host.phone}}</p>
+			<p>Language: {{host.language}}</p>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Total Orders</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{order_count}}</h1>
+		</div>
+	</div>
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+
+			<form method="get">
+				{{myFilter.form}}
+
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+
+		</div>
+	</div>
+	
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+                    <th>Country</th>
+					<th>City</th>
+                    <th>Region</th>
+                    <th>Street</th>
+					<th>Price $</th>
+					<th>Details (about room)</th>
+				</tr>
+                {% for b in books %}
+                <tr>
+                    <td>{{b.room_id.location.country_id.name}}</td>
+					<td>{{b.room_id.location.city}}</td>
+					<td>{{b.room_id.location.country_id.region_id.region_name}}</td>
+					<td>{{b.room_id.location.street}}</td>
+					<td>{{b.room_id.price}}</td>
+					<td>{{b.room_id.description}}</td>
+                </tr>
+                {% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

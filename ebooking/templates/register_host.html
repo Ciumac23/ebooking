@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="display-4">eBooking Registration</h1>
+  </div>
+    <form method="POST" action="register">
+            {% csrf_token %}
+            <div class="container login-container">
+                <div class="row">
+                    <div class="col-md-6 login-form-1">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" name = "first_name" class="form-control" placeholder="First name *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name = "second_name" class="form-control" placeholder="Last name *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name = "username" class="form-control" placeholder="User name *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name = "pass1" class="form-control" placeholder="Password *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name = "pass2" class="form-control" placeholder="Repeat password *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name = "email"class="form-control" placeholder="Email *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btnSubmit" value="Sign up" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </form>
+
+{% endblock content %}
